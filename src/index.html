@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyCompany.Inc</title>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Polyfill(s) for older browsers -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('main.js').catch(function(err){ console.error(err); });
+    </script>
+	
+	<script src="app.js"></script>
+  </head>
+
+  <body ng-app="mainApp">
+	<my-app>Loading AppComponent content here ... </my-app>
+
+	<h3 ng-controller="WeatherCtrl">
+		Today's date: {{date | date:'yyyy-MM-dd'}}
+	</h3>
+	
+	<div ng-controller="WeatherCtrl">
+		<h3>Current Weather in Toronto, Canada: {{ weather.temp.current | temp:2 }}</h3>
+	</div>
+	
+	<hr>
+	
+	<div class="link">
+	<a href="#/">Main Page</a>
+	<a href="#about">About Us</a>
+	<a href="#service">Our Services</a>
+	<a href="#customer">Our Customers</a>
+	</div>
+	<div ng-view></div>
+  </body>
+</html>
